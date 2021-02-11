@@ -13,7 +13,7 @@
 
 
 
-#define MAX_SSID_LEN 100
+#define MAX_SSID_LEN 32
 
 
 
