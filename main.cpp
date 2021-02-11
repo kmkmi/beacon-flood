@@ -99,7 +99,7 @@ int main(int argc, char* argv[]) {
         ssid_list.push_back(std::string(buf).substr(0,-1));
 
     }
-
+    fclose(fp);
 
     pcap_t* handle = pcap_open_live(argv[1], BUFSIZ, 1, 1000, errbuf);
     if (handle == nullptr) {
