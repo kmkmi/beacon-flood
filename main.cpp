@@ -44,7 +44,7 @@ char* hex(u_int8_t *addr, char* buf, int size)
 
 
 
-beacon_packet* getBeaconPacket(Mac apMac, std::string ssid ){
+beacon_packet* getBeaconPacket(std::string ssid ){
 
     beacon_packet* bpkt = (beacon_packet*)malloc(sizeof(beacon_packet));
     bpkt->rtap.header_revision = 0x0;
@@ -57,7 +57,7 @@ beacon_packet* getBeaconPacket(Mac apMac, std::string ssid ){
     bpkt->dot11_frame.frame_control_field.init(0x8000);
     bpkt->dot11_frame.duration = 0x0000;
 
-
+    Mac apMac = Mac("12:34:56:78:9a:be");
     bpkt->dot11_frame.mac1 = Mac("ff:ff:ff:ff:ff:ff");
     bpkt->dot11_frame.mac2 = apMac;
     bpkt->dot11_frame.mac3 = apMac;
@@ -111,13 +111,13 @@ int main(int argc, char* argv[]) {
 
     beacon_packet **packet = (beacon_packet**)malloc(sizeof(beacon_packet*)*ssid_list.size());
 
-    Mac apMac = Mac("12:34:56:78:9a:bc");
+
 
 
 
     for(unsigned int i = 0; i<ssid_list.size(); i++){
 
-        packet[i] = getBeaconPacket(apMac, ssid_list[i]);
+        packet[i] = getBeaconPacket(ssid_list[i]);
 
     }
 
